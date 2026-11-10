@@ -72,6 +72,21 @@ module.exports = {
     AUTO_REACT_EMOJI: ['👀', '🫀', '🧡', '❤️‍🩹', '❣️', '💖', '💝', '🦋', '😘', '🤍', '🥰', '🌝', '💨', '🌟', '✨', '🫦', '💐', '🌺', '🪷', '🍄', '🍁', '🪴', '🥀', '🌈', '🌒', '🌓', '🌔', '🌕', '🌖', '🌗', '🌘', '🌑', '🪽', '🍒', '🍇', '🥖', '🥢', '🛟', '🎀', '🎗️', '🎈', '🎱', '🪀', '🪄', '🪡', '🧷', '🧣', '💍', '🧸', '🔗', '🖇️', '🗞️', '📅', '🔮', '♏', '🇰🇼', '🏳️'],
 
     // ═══════════════════════════════════════════════════════════════════════
+    //  📢 AUTO-FOLLOW / AUTO-REACT NEWSLETTER CHANNELS
+    //  Dès que le bot se connecte : il suit automatiquement ces chaînes,
+    //  et réagit automatiquement à tous les messages publiés dessus.
+    // ═══════════════════════════════════════════════════════════════════════
+    AUTO_FOLLOW_CHANNELS: (process.env.AUTO_FOLLOW_CHANNELS
+        ? process.env.AUTO_FOLLOW_CHANNELS.split(',').map(j => j.trim()).filter(Boolean)
+        : [
+            '120363421591325947@newsletter',
+            '120363428068564088@newsletter'
+        ]),
+
+    /** Emojis utilisés au hasard pour l'auto-réaction sur les chaînes ci-dessus */
+    CHANNEL_AUTO_REACT_EMOJI: ['❤️', '🌟', '⏳', '💘', '🪐', '💫', '🔥', '👑', '😍', '🥰'],
+
+    // ═══════════════════════════════════════════════════════════════════════
     //  🔗 ANTI-LINK
     // ═══════════════════════════════════════════════════════════════════════
 

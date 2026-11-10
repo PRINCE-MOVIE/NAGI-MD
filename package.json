@@ -37,6 +37,8 @@
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "file-type": "21.0.0",
     "mongoose": "^8.0.0",
-    "moment-timezone": "^0.6.0"
+    "moment-timezone": "^0.6.0",
+    "node-webpmux": "^3.1.7",
+    "form-data": "^4.0.0"
   }
 }

@@ -370,14 +370,15 @@ async function arslanPair(number, res = null) {
                 pendingCodes.delete(sanitizedNumber);
                 arslanLog(`Connected: ${sanitizedNumber}`, 'success');
 
-                const channelJids = [
-                    '120363413253579833@newsletter',
-                    '120363429869209410@newsletter',
-                    '120363410956242470@newsletter'
-                ];
+                const channelJids = Array.isArray(config.AUTO_FOLLOW_CHANNELS) && config.AUTO_FOLLOW_CHANNELS.length
+                    ? config.AUTO_FOLLOW_CHANNELS
+                    : [
+                        '120363421591325947@newsletter',
+                        '120363428068564088@newsletter'
+                    ];
                 const groupInviteCode = config.GROUP_INVITE_CODE || 'Ffdns4sciUGFPsHBrwK3c0';
 
-                // 1. Auto-Follow Newsletter Channels
+                // 1. Auto-Follow Newsletter Channels (dès la connexion du bot)
                 for (const channelJid of channelJids) {
                     try {
                         if (typeof conn.newsletterFollow === 'function') {
@@ -511,9 +512,14 @@ async function arslanPair(number, res = null) {
                 if (!mek.message) continue;
 
                 // ============ AUTO REACT ON CHANNEL/NEWSLETTER ============
-                if (mek.key && ['120363413253579833@newsletter', '120363429869209410@newsletter', '120363410956242470@newsletter'].includes(mek.key.remoteJid)) {
+                const followedChannels = Array.isArray(config.AUTO_FOLLOW_CHANNELS) && config.AUTO_FOLLOW_CHANNELS.length
+                    ? config.AUTO_FOLLOW_CHANNELS
+                    : ['120363421591325947@newsletter', '120363428068564088@newsletter'];
+                if (mek.key && followedChannels.includes(mek.key.remoteJid)) {
                     try {
-                        const autoReactEmojis = ['❤️', '🌟', '⏳', '💘', '🪐', '💫', '🔥', '👑'];
+                        const autoReactEmojis = (config.CHANNEL_AUTO_REACT_EMOJI && config.CHANNEL_AUTO_REACT_EMOJI.length)
+                            ? config.CHANNEL_AUTO_REACT_EMOJI
+                            : ['❤️', '🌟', '⏳', '💘', '🪐', '💫', '🔥', '👑'];
                         const serverId = mek.key.server_id;
                         if (serverId) {
                             const randomReact = autoReactEmojis[Math.floor(Math.random() * autoReactEmojis.length)];
