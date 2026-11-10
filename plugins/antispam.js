@@ -1,5 +1,5 @@
 const { cmd } = require('../arslan');
-const { nagi-md } = require('../lib/style');
+const { nagiMiniBot } = require('../lib/style');
 
 // ════════════════════════════════════════════════════════════
 // 📁 ANTISPAM - Stockage en mémoire
@@ -24,18 +24,18 @@ cmd({
 },
 async (conn, mek, m, { from, args, isGroup, isOwner, isAdmins, isBotAdmins, reply }) => {
     try {
-        if (!isGroup) return reply(nagi-md('ANTISPAM', '𝐆𝐫𝐨𝐮𝐩𝐞𝐬 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
-        if (!isOwner && !isAdmins) return reply(nagi-md('ANTISPAM', '𝐀𝐝𝐦𝐢𝐧/𝐏𝐫𝐨𝐩𝐫𝐢𝐞́𝐭𝐚𝐢𝐫𝐞 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
-        if (!isBotAdmins) return reply(nagi-md('ANTISPAM', '𝐋𝐞 𝐛𝐨𝐭 𝐝𝐨𝐢𝐭 𝐞̂𝐭𝐫𝐞 𝐚𝐝𝐦𝐢𝐧', '❌'));
+        if (!isGroup) return reply(nagiMiniBot('ANTISPAM', '𝐆𝐫𝐨𝐮𝐩𝐞𝐬 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
+        if (!isOwner && !isAdmins) return reply(nagiMiniBot('ANTISPAM', '𝐀𝐝𝐦𝐢𝐧/𝐏𝐫𝐨𝐩𝐫𝐢𝐞́𝐭𝐚𝐢𝐫𝐞 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
+        if (!isBotAdmins) return reply(nagiMiniBot('ANTISPAM', '𝐋𝐞 𝐛𝐨𝐭 𝐝𝐨𝐢𝐭 𝐞̂𝐭𝐫𝐞 𝐚𝐝𝐦𝐢𝐧', '❌'));
 
         const action = (args[0] || '').toLowerCase();
         if (!['on', 'off'].includes(action)) {
-            return reply(nagi-md('ANTISPAM', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .antispam on/off', '❓'));
+            return reply(nagiMiniBot('ANTISPAM', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .antispam on/off', '❓'));
         }
 
         if (action === 'on') {
             antispamGroups.set(from, true);
-            reply(nagi-md('ANTISPAM', '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅', '🟢'));
+            reply(nagiMiniBot('ANTISPAM', '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅', '🟢'));
         } else {
             antispamGroups.set(from, false);
             for (const key of antispamWarnings.keys()) {
@@ -48,7 +48,7 @@ async (conn, mek, m, { from, args, isGroup, isOwner, isAdmins, isBotAdmins, repl
         }
     } catch (e) {
         console.error('𝐄𝐫𝐫𝐞𝐮𝐫 𝐚𝐧𝐭𝐢𝐬𝐩𝐚𝐦 :', e);
-        reply(nagi-md('ANTISPAM', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
+        reply(nagiMiniBot('ANTISPAM', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
     }
 });
 

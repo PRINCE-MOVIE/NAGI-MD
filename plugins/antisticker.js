@@ -1,5 +1,5 @@
 const { cmd } = require('../arslan');
-const { nagi-md } = require('../lib/style');
+const { nagiMiniBot } = require('../lib/style');
 
 // ════════════════════════════════════════════════════════════
 // 📁 ANTISTICKER - Fonctionne en groupe ET en chat privé
@@ -23,7 +23,7 @@ async (conn, mek, m, { from, args, isGroup, isOwner, isAdmins, isBotAdmins, repl
     try {
         const action = (args[0] || '').toLowerCase();
         if (!['on', 'off'].includes(action)) {
-            return reply(nagi-md('ANTISTICKER', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .antisticker on/off', '❓'));
+            return reply(nagiMiniBot('ANTISTICKER', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .antisticker on/off', '❓'));
         }
 
         if (isGroup) {
@@ -36,12 +36,12 @@ async (conn, mek, m, { from, args, isGroup, isOwner, isAdmins, isBotAdmins, repl
                     if (key.startsWith(from + ':')) antistickerWarnings.delete(key);
                 }
             }
-            return reply(nagi-md('ANTISTICKER', action === 'on' ? '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅ (𝐠𝐫𝐨𝐮𝐩𝐞)' : '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌ (𝐠𝐫𝐨𝐮𝐩𝐞)', action === 'on' ? '🟢' : '🔴'));
+            return reply(nagiMiniBot('ANTISTICKER', action === 'on' ? '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅ (𝐠𝐫𝐨𝐮𝐩𝐞)' : '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌ (𝐠𝐫𝐨𝐮𝐩𝐞)', action === 'on' ? '🟢' : '🔴'));
         } else {
             if (!isOwner) return reply(yxzMiniBot('ANTISTICKER', '𝐏𝐫𝐨𝐩𝐫𝐢𝐞́𝐭𝐚𝐢𝐫𝐞 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
 
             antistickerPrivate.set(from, action === 'on');
-            return reply(nagi-md('ANTISTICKER', action === 'on' ? '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅ (𝐜𝐡𝐚𝐭 𝐩𝐫𝐢𝐯𝐞́)' : '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌ (𝐜𝐡𝐚𝐭 𝐩𝐫𝐢𝐯𝐞́)', action === 'on' ? '🟢' : '🔴'));
+            return reply(nagiMiniBot('ANTISTICKER', action === 'on' ? '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅ (𝐜𝐡𝐚𝐭 𝐩𝐫𝐢𝐯𝐞́)' : '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌ (𝐜𝐡𝐚𝐭 𝐩𝐫𝐢𝐯𝐞́)', action === 'on' ? '🟢' : '🔴'));
         }
     } catch (e) {
         console.error('𝐄𝐫𝐫𝐞𝐮𝐫 𝐚𝐧𝐭𝐢𝐬𝐭𝐢𝐜𝐤𝐞𝐫 :', e);

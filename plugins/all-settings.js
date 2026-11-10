@@ -1,6 +1,6 @@
 const { cmd } = require('../arslan');
 const { updateUserConfig } = require('../lib/database');
-const { nagi-md } = require('../lib/style');
+const { nagiMiniBot } = require('../lib/style');
 
 // Helper function to update config in memory and database
 const updateConfig = async (key, value, botNumber, config, reply) => {
@@ -15,7 +15,7 @@ const updateConfig = async (key, value, botNumber, config, reply) => {
         await updateUserConfig(botNumber, newConfig);
 
         const statusIcon = (value === 'true') ? '🟢 ON' : (value === 'false') ? '🔴 OFF' : value;
-        return reply(nagi-md(key.replace(/_/g, ' '), '𝐌𝐢𝐬 𝐚̀ 𝐣𝐨𝐮𝐫 ✅', statusIcon));
+        return reply(nagiMiniBot(key.replace(/_/g, ' '), '𝐌𝐢𝐬 𝐚̀ 𝐣𝐨𝐮𝐫 ✅', statusIcon));
     } catch (e) {
         console.error(e);
         return reply(𝐍agi-𝐌d(key.replace(/_/g, ' '), '𝐄́𝐜𝐡𝐞𝐜 𝐝𝐞 𝐦𝐢𝐬𝐞 𝐚̀ 𝐣𝐨𝐮𝐫', '⚠️'));
@@ -109,7 +109,7 @@ async(conn, mek, m, { args, isOwner, reply, botNumber, config }) => {
     } else if (value === 'off' || value === 'false') {
         await updateConfig('WELCOME', 'false', botNumber, config, reply);
     } else {
-        reply(nagi-md('WELCOME', config.WELCOME === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .welcome on/off'));
+        reply(nagiMiniBot('WELCOME', config.WELCOME === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .welcome on/off'));
     }
 });
 
@@ -128,7 +128,7 @@ async(conn, mek, m, { args, isOwner, reply, botNumber, config }) => {
     } else if (value === 'off' || value === 'false') {
         await updateConfig('GOODBYE', 'false', botNumber, config, reply);
     } else {
-        reply(nagi-md('GOODBYE', config.GOODBYE === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .goodbye on/off'));
+        reply(nagiMiniBot('GOODBYE', config.GOODBYE === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .goodbye on/off'));
     }
 });
 
@@ -154,7 +154,7 @@ async(conn, mek, m, { args, isOwner, reply, botNumber, config }) => {
         // FIX: this reply used to be a truncated/unterminated sentence
         // ("...USKA MSG KHUD HI SEEN ") that never told the user how to
         // toggle the feature — now uses the same banner as everything else.
-        reply(nagi-md('AUTO READ', config.READ_MESSAGE === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autoread on/off'));
+        reply(nagiMiniBot('AUTO READ', config.READ_MESSAGE === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autoread on/off'));
     }
 });
 
@@ -174,7 +174,7 @@ async(conn, mek, m, { args, isOwner, reply, botNumber, config }) => {
     } else if (value === 'off' || value === 'false') {
         await updateConfig('AUTO_VIEW_STATUS', 'false', botNumber, config, reply);
     } else {
-        reply(nagi-md('AUTO STATUS VIEW', config.AUTO_VIEW_STATUS === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autoviewsview on/off'));
+        reply(nagiMiniBot('AUTO STATUS VIEW', config.AUTO_VIEW_STATUS === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autoviewsview on/off'));
     }
 });
 
@@ -194,7 +194,7 @@ async(conn, mek, m, { args, isOwner, reply, botNumber, config }) => {
     } else if (value === 'off' || value === 'false') {
         await updateConfig('AUTO_LIKE_STATUS', 'false', botNumber, config, reply);
     } else {
-        reply(nagi-md('AUTO LIKE STATUS', config.AUTO_LIKE_STATUS === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autolikestatus on/off'));
+        reply(nagiMiniBot('AUTO LIKE STATUS', config.AUTO_LIKE_STATUS === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autolikestatus on/off'));
     }
 });
 
@@ -218,7 +218,7 @@ async(conn, mek, m, { args, isOwner, reply, botNumber, config }) => {
     } else if (value === 'off' || value === 'false') {
         await updateConfig('AUTO_REACT', 'false', botNumber, config, reply);
     } else {
-        reply(nagi-md('AUTO REACT', config.AUTO_REACT === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autoreact on/off'));
+        reply(nagiMiniBot('AUTO REACT', config.AUTO_REACT === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autoreact on/off'));
     }
 });
 
@@ -240,7 +240,7 @@ async(conn, mek, m, { args, isOwner, reply, botNumber, config }) => {
     if (validModes.includes(mode)) {
         await updateConfig('WORK_TYPE', mode, botNumber, config, reply);
     } else {
-        reply(nagi-md('MODE', config.WORK_TYPE, `𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .mode <${validModes.join('/')}>`));
+        reply(nagiMiniBot('MODE', config.WORK_TYPE, `𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .mode <${validModes.join('/')}>`));
     }
 });
 
@@ -256,10 +256,10 @@ async(conn, mek, m, { args, isOwner, reply, botNumber, config }) => {
 
     if (newPrefix) {
         // Ensure prefix is short (single character or short string)
-        if (newPrefix.length > 1 && newPrefix !== 'noprefix') return reply(nagi-md('SETPREFIX', '𝐑𝐞𝐣𝐞𝐭𝐞́', '𝐃𝐨𝐢𝐭 𝐞̂𝐭𝐫𝐞 𝐜𝐨𝐮𝐫𝐭, 𝐞𝐱: . 𝐨𝐮 ! 𝐨𝐮 #'));
+        if (newPrefix.length > 1 && newPrefix !== 'noprefix') return reply(nagiMiniBot('SETPREFIX', '𝐑𝐞𝐣𝐞𝐭𝐞́', '𝐃𝐨𝐢𝐭 𝐞̂𝐭𝐫𝐞 𝐜𝐨𝐮𝐫𝐭, 𝐞𝐱: . 𝐨𝐮 ! 𝐨𝐮 #'));
 
         await updateConfig('PREFIX', newPrefix, botNumber, config, reply);
     } else {
-        reply(nagi-md('PREFIX', config.PREFIX, '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .setprefix <symbol>'));
+        reply(nagiMiniBot('PREFIX', config.PREFIX, '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .setprefix <symbol>'));
     }
 });

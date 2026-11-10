@@ -1,6 +1,6 @@
 const { cmd } = require('../arslan');
 const config = require('../config');
-const { nagi-md } = require('../lib/style');
+const { nagiMiniBot } = require('../lib/style');
 
 cmd({
   pattern: "autobio",
@@ -21,7 +21,7 @@ cmd({
 
     // ❓ Help / status
     if (!state || !["on", "off"].includes(state)) {
-      return reply(nagi-md('AUTO BIO', global.autoBio ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autobio on/off'));
+      return reply(nagiMiniBot('AUTO BIO', global.autoBio ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .autobio on/off'));
     }
 
     // ✅ Set state
@@ -31,11 +31,11 @@ cmd({
       updateBio(conn);
     }
 
-    return reply(nagi-md('AUTO BIO', state === 'on' ? '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅' : '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌', state === 'on' ? '🟢' : '🔴'));
+    return reply(nagiMiniBot('AUTO BIO', state === 'on' ? '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅' : '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌', state === 'on' ? '🟢' : '🔴'));
 
   } catch (e) {
     console.error("AUTOBIO ERROR:", e);
-    reply(nagi-md('AUTO BIO', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
+    reply(nagiMiniBot('AUTO BIO', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
   }
 });
 

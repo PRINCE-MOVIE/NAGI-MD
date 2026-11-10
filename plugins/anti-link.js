@@ -1,5 +1,5 @@
 const { cmd } = require('../arslan');
-const { nagi-md } = require('../lib/style');
+const { nagiMiniBot } = require('../lib/style');
 
 // ════════════════════════════════════════════════════════════
 // 📁 ANTILINK - In-Memory Storage (no file system = no restart/reset issues)
@@ -50,30 +50,30 @@ cmd({
 },
 async (conn, mek, m, { from, args, isGroup, isOwner, isAdmins, isBotAdmins, reply }) => {
     try {
-        if (!isGroup) return reply(nagi-md('ANTILINK', '𝐆𝐫𝐨𝐮𝐩𝐞𝐬 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
-        if (!isOwner && !isAdmins) return reply(nagi-md('ANTILINK', '𝐀𝐝𝐦𝐢𝐧/𝐏𝐫𝐨𝐩𝐫𝐢𝐞́𝐭𝐚𝐢𝐫𝐞 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
-        if (!isBotAdmins) return reply(nagi-md('ANTILINK', '𝐋𝐞 𝐛𝐨𝐭 𝐝𝐨𝐢𝐭 𝐞̂𝐭𝐫𝐞 𝐚𝐝𝐦𝐢𝐧', '❌'));
+        if (!isGroup) return reply(nagiMiniBot('ANTILINK', '𝐆𝐫𝐨𝐮𝐩𝐞𝐬 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
+        if (!isOwner && !isAdmins) return reply(nagiMiniBot('ANTILINK', '𝐀𝐝𝐦𝐢𝐧/𝐏𝐫𝐨𝐩𝐫𝐢𝐞́𝐭𝐚𝐢𝐫𝐞 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
+        if (!isBotAdmins) return reply(nagiMiniBot('ANTILINK', '𝐋𝐞 𝐛𝐨𝐭 𝐝𝐨𝐢𝐭 𝐞̂𝐭𝐫𝐞 𝐚𝐝𝐦𝐢𝐧', '❌'));
 
         const action = (args[0] || '').toLowerCase();
         if (!['on', 'off'].includes(action)) {
-            return reply(nagi-md('ANTILINK', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .antilink on/off', '❓'));
+            return reply(nagiMiniBot('ANTILINK', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .antilink on/off', '❓'));
         }
 
         if (action === 'on') {
             antilinkGroups.set(from, true);
-            reply(nagi-md('ANTILINK', '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅', '🟢'));
+            reply(nagiMiniBot('ANTILINK', '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅', '🟢'));
         } else {
             antilinkGroups.set(from, false);
             // Clear all warnings for this group
             for (const key of antilinkWarnings.keys()) {
                 if (key.startsWith(from + ':')) antilinkWarnings.delete(key);
             }
-            reply(nagi-md('ANTILINK', '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌', '🔴'));
+            reply(nagiMiniBot('ANTILINK', '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌', '🔴'));
         }
 
     } catch (e) {
         console.error('Antilink cmd error:', e);
-        reply(nagi-md('ANTILINK', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
+        reply(nagiMiniBot('ANTILINK', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
     }
 });
 

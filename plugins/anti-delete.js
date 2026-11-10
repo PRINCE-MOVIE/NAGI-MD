@@ -1,6 +1,6 @@
 const { cmd } = require('../arslan');
 const { setAntideleteStatus, getAntideleteStatus } = require('../data/Antidelete');
-const { nagi-md } = require('../lib/style');
+const { nagiMiniBot } = require('../lib/style');
 
 cmd({
     pattern: "antidelete",
@@ -15,12 +15,12 @@ async(conn, mek, m, { args, isOwner, reply, from }) => {
 
     if (mode === 'on' || mode === 'enable') {
         await setAntideleteStatus(from, true);
-        await reply(nagi-md('ANTI-DELETE', '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅', '🟢'));
+        await reply(nagiMiniBot('ANTI-DELETE', '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅', '🟢'));
     } else if (mode === 'off' || mode === 'disable') {
         await setAntideleteStatus(from, false);
-        await reply(nagi-md('ANTI-DELETE', '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌', '🔴'));
+        await reply(nagiMiniBot('ANTI-DELETE', '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌', '🔴'));
     } else {
         const current = await getAntideleteStatus(from);
-        await reply(nagi-md('ANTI-DELETE', current ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .antidelete on/off'));
+        await reply(nagiMiniBot('ANTI-DELETE', current ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .antidelete on/off'));
     }
 });

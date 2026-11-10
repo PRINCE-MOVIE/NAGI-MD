@@ -1,6 +1,6 @@
 const { cmd } = require('../arslan');
 const config = require('../config');
-const { nagi-md } = require('../lib/style');
+const { nagiMiniBot } = require('../lib/style');
 
 
 cmd({
@@ -17,11 +17,11 @@ async (conn, mek, m, { from, args, isCreator, reply }) => {
     const status = args[0]?.toLowerCase();
     if (status === "on") {
         config.ANTI_CALL = "true";
-        return reply(nagi-md('ANTI-CALL', '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅', '🟢'));
+        return reply(nagiMiniBot('ANTI-CALL', '𝐀𝐜𝐭𝐢𝐯𝐞́ ✅', '🟢'));
     } else if (status === "off") {
         config.ANTI_CALL = "false";
-        return reply(nagi-md('ANTI-CALL', '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌', '🔴'));
+        return reply(nagiMiniBot('ANTI-CALL', '𝐃𝐞́𝐬𝐚𝐜𝐭𝐢𝐯𝐞́ ❌', '🔴'));
     } else {
-        return reply(nagi-md('ANTI-CALL', config.ANTI_CALL === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .anticall on/off'));
+        return reply(nagiMiniBot('ANTI-CALL', config.ANTI_CALL === 'true' ? '𝐀𝐂𝐓𝐈𝐕𝐄́ ✅' : '𝐃𝐄́𝐒𝐀𝐂𝐓𝐈𝐕𝐄́ ❌', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .anticall on/off'));
     }
 });

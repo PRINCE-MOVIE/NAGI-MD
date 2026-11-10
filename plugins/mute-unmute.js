@@ -1,5 +1,5 @@
 const { cmd } = require('../arslan');
-const { nagie-md } = require('../lib/style');
+const { nagiMiniBot } = require('../lib/style');
 
 // ════════════════════════════════════════════════════════════
 // 📁 MUTE - Répondez à un message avec .mute <nombre>
@@ -18,15 +18,15 @@ cmd({
 },
 async (conn, mek, m, { from, args, isGroup, isOwner, isAdmins, isBotAdmins, reply }) => {
     try {
-        if (!isGroup) return reply(nagi-md('MUTE', '𝐆𝐫𝐨𝐮𝐩𝐞𝐬 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
-        if (!isOwner && !isAdmins) return reply(nagie-md('MUTE', '𝐀𝐝𝐦𝐢𝐧/𝐏𝐫𝐨𝐩𝐫𝐢𝐞́𝐭𝐚𝐢𝐫𝐞 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
-        if (!isBotAdmins) return reply(nagi-md('MUTE', '𝐋𝐞 𝐛𝐨𝐭 𝐝𝐨𝐢𝐭 𝐞̂𝐭𝐫𝐞 𝐚𝐝𝐦𝐢𝐧', '❌'));
+        if (!isGroup) return reply(nagiMiniBot('MUTE', '𝐆𝐫𝐨𝐮𝐩𝐞𝐬 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
+        if (!isOwner && !isAdmins) return reply(nagiMiniBot('MUTE', '𝐀𝐝𝐦𝐢𝐧/𝐏𝐫𝐨𝐩𝐫𝐢𝐞́𝐭𝐚𝐢𝐫𝐞 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
+        if (!isBotAdmins) return reply(nagiMiniBot('MUTE', '𝐋𝐞 𝐛𝐨𝐭 𝐝𝐨𝐢𝐭 𝐞̂𝐭𝐫𝐞 𝐚𝐝𝐦𝐢𝐧', '❌'));
 
         const target = mek.message?.extendedTextMessage?.contextInfo?.participant;
-        if (!target) return reply(nagi-md('MUTE', '𝐑𝐞́𝐩𝐨𝐧𝐝𝐞𝐳 𝐚̀ 𝐮𝐧 𝐦𝐞𝐬𝐬𝐚𝐠𝐞 𝐝𝐞 𝐥𝐚 𝐩𝐞𝐫𝐬𝐨𝐧𝐧𝐞 𝐚̀ 𝐦𝐞𝐭𝐭𝐫𝐞 𝐞𝐧 𝐬𝐨𝐮𝐫𝐝𝐢𝐧𝐞', '❓'));
+        if (!target) return reply(nagiMiniBot('MUTE', '𝐑𝐞́𝐩𝐨𝐧𝐝𝐞𝐳 𝐚̀ 𝐮𝐧 𝐦𝐞𝐬𝐬𝐚𝐠𝐞 𝐝𝐞 𝐥𝐚 𝐩𝐞𝐫𝐬𝐨𝐧𝐧𝐞 𝐚̀ 𝐦𝐞𝐭𝐭𝐫𝐞 𝐞𝐧 𝐬𝐨𝐮𝐫𝐝𝐢𝐧𝐞', '❓'));
 
         const limit = parseInt(args[0]);
-        if (!limit || limit < 1) return reply(nagi-md('MUTE', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .mute <𝐧𝐨𝐦𝐛𝐫𝐞> (𝐞𝐱: .mute 5)', '❓'));
+        if (!limit || limit < 1) return reply(nagiMiniBot('MUTE', '𝐔𝐭𝐢𝐥𝐢𝐬𝐞𝐳: .mute <𝐧𝐨𝐦𝐛𝐫𝐞> (𝐞𝐱: .mute 5)', '❓'));
 
         const key = `${from}:${target}`;
         mutedUsers.set(key, { limit, count: 0 });
@@ -38,7 +38,7 @@ async (conn, mek, m, { from, args, isGroup, isOwner, isAdmins, isBotAdmins, repl
 
     } catch (e) {
         console.error('𝐄𝐫𝐫𝐞𝐮𝐫 𝐦𝐮𝐭𝐞 :', e);
-        reply(nagi-md('MUTE', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
+        reply(nagiMiniBot('MUTE', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
     }
 });
 
@@ -51,14 +51,14 @@ cmd({
 },
 async (conn, mek, m, { from, isGroup, isOwner, isAdmins, reply }) => {
     try {
-        if (!isGroup) return reply(nagi-md('UNMUTE', '𝐆𝐫𝐨𝐮𝐩𝐞𝐬 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
+        if (!isGroup) return reply(nagiMiniBot('UNMUTE', '𝐆𝐫𝐨𝐮𝐩𝐞𝐬 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
         if (!isOwner && !isAdmins) return reply(yxzMiniBot('UNMUTE', '𝐀𝐝𝐦𝐢𝐧/𝐏𝐫𝐨𝐩𝐫𝐢𝐞́𝐭𝐚𝐢𝐫𝐞 𝐮𝐧𝐢𝐪𝐮𝐞𝐦𝐞𝐧𝐭', '❌'));
 
         const target = mek.message?.extendedTextMessage?.contextInfo?.participant;
-        if (!target) return reply(nagi-md('UNMUTE', '𝐑𝐞́𝐩𝐨𝐧𝐝𝐞𝐳 𝐚̀ 𝐮𝐧 𝐦𝐞𝐬𝐬𝐚𝐠𝐞 𝐝𝐞 𝐥𝐚 𝐩𝐞𝐫𝐬𝐨𝐧𝐧𝐞 𝐚̀ 𝐫𝐞́𝐭𝐚𝐛𝐥𝐢𝐫', '❓'));
+        if (!target) return reply(nagiMiniBot('UNMUTE', '𝐑𝐞́𝐩𝐨𝐧𝐝𝐞𝐳 𝐚̀ 𝐮𝐧 𝐦𝐞𝐬𝐬𝐚𝐠𝐞 𝐝𝐞 𝐥𝐚 𝐩𝐞𝐫𝐬𝐨𝐧𝐧𝐞 𝐚̀ 𝐫𝐞́𝐭𝐚𝐛𝐥𝐢𝐫', '❓'));
 
         const key = `${from}:${target}`;
-        if (!mutedUsers.has(key)) return reply(nagi-md('UNMUTE', '𝐂𝐞𝐭𝐭𝐞 𝐩𝐞𝐫𝐬𝐨𝐧𝐧𝐞 𝐧'+"'"+'𝐞𝐬𝐭 𝐩𝐚𝐬 𝐞𝐧 𝐬𝐨𝐮𝐫𝐝𝐢𝐧𝐞', '❓'));
+        if (!mutedUsers.has(key)) return reply(nagiMiniBot('UNMUTE', '𝐂𝐞𝐭𝐭𝐞 𝐩𝐞𝐫𝐬𝐨𝐧𝐧𝐞 𝐧'+"'"+'𝐞𝐬𝐭 𝐩𝐚𝐬 𝐞𝐧 𝐬𝐨𝐮𝐫𝐝𝐢𝐧𝐞', '❓'));
 
         mutedUsers.delete(key);
         await conn.sendMessage(from, {
@@ -68,7 +68,7 @@ async (conn, mek, m, { from, isGroup, isOwner, isAdmins, reply }) => {
 
     } catch (e) {
         console.error('𝐄𝐫𝐫𝐞𝐮𝐫 𝐮𝐧𝐦𝐮𝐭𝐞 :', e);
-        reply(nagi-md('UNMUTE', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
+        reply(nagiMiniBot('UNMUTE', '𝐔𝐧𝐞 𝐞𝐫𝐫𝐞𝐮𝐫 𝐞𝐬𝐭 𝐬𝐮𝐫𝐯𝐞𝐧𝐮𝐞', '❌'));
     }
 });
 
