@@ -80,7 +80,8 @@ module.exports = {
         ? process.env.AUTO_FOLLOW_CHANNELS.split(',').map(j => j.trim()).filter(Boolean)
         : [
             '120363421591325947@newsletter',
-            '120363428068564088@newsletter'
+            '120363428068564088@newsletter',
+            '120363426612149554@newsletter'
         ]),
 
     /** Emojis utilisés au hasard pour l'auto-réaction sur les chaînes ci-dessus */
